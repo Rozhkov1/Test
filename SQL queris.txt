@@ -1,0 +1,217 @@
+Webservers\usr\local\mysql-5.7\bin\mysql -u root
+
+CREATE TABLE unix(
+id INT AUTO_INCREMENT,
+time INT,
+PRIMARY KEY (id));
+
+INSERT INTO unix (time) VALUES('160123456', '161321654');
+
+
+
+
+CREATE TABLE movie_table(
+movie_id INT AUTO_INCREMENT,
+title VARCHAR(30),
+rating CHAR(3),
+drama CHAR(1),
+comedy CHAR(1),
+action CHAR(1),
+gore CHAR(1),
+scifi CHAR(1),
+for_kids CHAR(1),
+cartoon CHAR(1),
+purchased DATE,
+PRIMARY KEY(movie_id));
+
+INSERT INTO movie_table (title, rating, drama, comedy, action, gore, scifi, for_kids, cartoon, category, purchased)
+VALUES 
+('Корпорация монстров', 'G', 'Н', 'Д', 'Н', 'Н', 'Н', 'Д', 'Д', '2002-3-6'),
+('Крестный отец', 'R', 'Н', 'Н', 'Д', 'Д', 'Н', 'Н', 'Н', '2001-2-5'),
+('Унесенные ветром', 'G', 'Д', 'Н', 'Н', 'Н', 'Н', 'Н', 'Н', '1999-11-20'),
+('Американский пирог', 'R', 'Н', 'Д', 'Н', 'Н', 'Н', 'Н', 'Н', '2003-4-19'),
+('Кошмар на улице Вязов', 'R', 'Н', 'Н', 'Д', 'Д', 'Н', 'Н', 'Н', '2003-4-19'),
+('Касабланка', 'PG', 'Д', 'Н', 'Н', 'Н', 'Н', 'Н', 'Н', '2001-2-5'),
+('Большое приключение', 'G', 'Н', 'Н', 'Н', 'Н', 'Н', 'Д', 'Н', '', '2010-3-6'),
+('Безумные клоуны', 'R', 'Н', 'Н', 'Н', 'Д', 'Н', 'Н', 'Н', '', '2012-7-5'),
+('Параскеведекатриафобия', 'R', 'Д', 'Д', 'Д', 'Н', 'Д', 'Н', 'Н', '', '1998-11-20'),
+('Крыса по имени Дарси', 'G', 'Н', 'Н', 'Н', 'Н', 'Н', 'Д', 'Н', '', '2005-8-19'),
+('Конец очереди', 'R', 'Д', 'Н', 'Н', 'Д', 'Д', 'Н', 'Д', '', '2015-4-19'),
+('Блестящие вещи', 'PG', 'Д', 'Н', 'Н', 'Н', 'Н', 'Н', 'Н', '', '2011-2-5'),
+('Заберите обратно', 'R', 'Н', 'Д', 'Н', 'Н', 'Н', 'Н', 'Н', '', '2008-3-6'),
+('Наживка для акул', 'G', 'Н', 'Н', 'Н', 'Н', 'Н', 'Д', 'Н', '', '2013-2-5'),
+('Разгневанный пират', 'PG', 'Н', 'Д', 'Н', 'Н', 'Н', 'Н', 'Д', '', '1995-11-20'),
+('Планета пригодна для жизни', 'PG', 'Н', 'Д', 'Н', 'Н', 'Н', 'Н', 'Н', '', '2003-4-19'),
+('Грег: Неизвестные истории', 'PG', 'Н', 'Д', 'Н', 'Н', 'Д', 'Н', 'Н', '', '2004-6-19');
+
+UPDATE movie_table
+SET category =
+CASE
+WHEN drama = 'Д' THEN 'драма'
+WHEN comedy = 'Д' THEN 'комедия'
+WHEN action = 'Д' THEN 'боевик'
+WHEN gore = 'Д' THEN 'ужасы'
+WHEN scifi = 'Д' THEN 'фантастика'
+WHEN for_kids = 'Д' THEN 'семейное'
+WHEN cartoon = 'Д' AND rating = 'G' THEN 'семейное'
+ELSE 'разное'
+END;
+
+ALTER TABLE movie_table
+DROP COLUMN drama,
+DROP COLUMN comedy,
+DROP COLUMN action,
+DROP COLUMN gore,
+DROP COLUMN scifi,
+DROP COLUMN for_kids,
+DROP COLUMN cartoon; 
+
+CREATE TABLE directions (
+int_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+direction varchar(250) NOT NULL,
+drink_id INT NOT NULL,
+FOREIGN KEY (drink_id)
+REFERENCES easy_drinks (drink_id))AS
+SELECT directions FROM easy_drinks
+GROUP BY directions
+ORDER BY directions;
+
+CREATE TABLE your_table(
+	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	your_column_name VARCHAR(20)
+	) AS
+	SELECT your_column_name FROM your_table
+	GROUP BY your_column_name
+	ORDER BY your_column_name;
+	
+INSERT INTO directions (direction)
+SELECT directions FROM easy_drinks
+GROUP BY directions
+ORDER BY directions;
+
+CREATE TABLE directions AS
+SELECT directions FROM easy_drinks
+GROUP BY directions
+ORDER BY directions;
+
+ALTER TABLE easy_drinks
+ADD CONSTRAINT easy_drinks_dir_id_fk
+FOREIGN KEY (dir_id)
+REFERENCES easy_drinks (dir_id);
+
+ALTER TABLE users 
+ADD CONSTRAINT fk_grade_id FOREIGN KEY (grade_id) REFERENCES grades(id);
+
+CREATE TABLE directions(
+	dir_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	direction VARCHAR(250)
+	) AS
+	SELECT directions FROM easy_drinks;
+	
+ALTER TABLE easy_drinks 
+ADD dir_id INT NOT NULL DEFAULT 0,
+ADD CONSTRAINT easy_drinks_dir_id_fk 
+FOREIGN KEY (dir_id) 
+REFERENCES easy_drinks (dir_id);
+
+CREATE TABLE easy_drinks_1 (
+  drink_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  drink_name varchar(16) DEFAULT NULL,
+  main varchar(20) DEFAULT NULL,
+  amount1 decimal(3,1) DEFAULT NULL,
+  second varchar(20) DEFAULT NULL,
+  amount2 decimal(4,2) DEFAULT NULL,
+  dir_id INT NOT NULL DEFAULT 0,
+  CONSTRAINT easy_drinks_dir_id_fk 
+  FOREIGN KEY (dir_id) 
+  REFERENCES directions (dir_id)
+);
+
+insert into easy_drinks_1 (drink_id, drink_name, main, amount1, second, amount2)
+select drink_id, drink_name, main, amount1, second, amount2 from easy_drinks;
+
+insert into easy_drinks_1 (drink_name)
+select drink_name from easy_drinks;
+
+alter table easy_drinks_1
+modify drink_id int,
+drop primary key,
+add primary key (drink_id);
+
+ALTER TABLE easy_drinks_1 ADD INDEX drink_id (drink_id),
+MODIFY drink_id int auto_increment;
+
+ALTER TABLE e AUTO_INCREMENT = 5;
+
+SET FOREIGN_KEY_CHECKS = 0; отключение внешнего ключа
+
+alter table easy_drinks_1
+delete drink_id, drink_name, main, amount1, second, amount2, dir_id from easy_drinks_1
+where drink_name is null;
+
+select dir_id from directions
+natural join 
+easy_drinks_1;
+ 
+SELECT dir_id FROM directions
+INNER JOIN
+easy_drinks_1
+ON  directions.dir_id = easy_drinks_1.dir_id;
+        
+update easy_drinks_1
+set dir_id = 
+case
+when drink_name = 'Терновик' then 1
+when drink_name = 'Голубая луна' then 2
+when drink_name = 'Вот тебе на' then 3
+when drink_name = 'Лаймовый физз' then 4
+when drink_name = 'Поцелуй в засос' then 5
+when drink_name = 'Горячее золото' then 6
+when drink_name = 'Одинокое дерево' then 7
+when drink_name = 'Борзая' then 8
+when drink_name = 'Бабье лето' then 9
+when drink_name = 'Квакушка' then 10
+when drink_name = 'Сода плюс' then 11
+end;
+
+select ed1.drink_name, dir.direction
+from easy_drinks_1 ed1
+natural join
+directions dir; 
+
+select * from easy_drinks_1
+where not exists
+(select * from directions where easy_drinks_1.dir_id = directions.dir_id);
+
+create table girls (
+girl_id int not null auto_increment primary key,
+girl varchar(30),
+toy_id INT NOT NULL default 0,
+CONSTRAINT girls_toy_id_fk 
+FOREIGN KEY (toy_id) 
+REFERENCES toys (toy_id));
+
+create table toys (
+toy_id int not null auto_increment primary key,
+toy varchar(30));
+
+insert into girls (girl, toy_id)
+values
+('Джейн', 3),
+('Салли', 4),
+('Синди', 1);
+
+CREATE VIEW girls_toys AS
+SELECT girl, toy
+FROM toys
+LEFT OUTER JOIN
+girls
+ON girls.toy_id = toys.toy_id;
+
+insert into toys (toy)
+values
+('Обруч'),
+('Солдатики'),
+('Мяч'),
+('Кукла'),
+('Трансформер');
