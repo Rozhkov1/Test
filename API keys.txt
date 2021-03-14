@@ -1,0 +1,51 @@
+HTTP - request
+GET /haiku.html HTTP/1.1
+Host: java-course.ru
+Connection: close
+
+
+HTTP - response
+HTTP/1.1 200 OK
+Date: Sun, 24 Nov 2019 12:31:27 GMT
+Server: Apache
+Last-Modified: Wed, 02 Nov 2011 09:00:25 GMT
+Accept-Ranges: bytes
+Content-Length: 7238
+Connection: close
+Content-Type: text/html
+
+ntp.time.in.ua - основной сервер точного времени в Украине
+
+
+	
+	002b11f308cb6fb6971c710c5fa1f0f3    //https://weatherstack.com   API key
+	
+	
+	00d9ac59b4bdc924164e509194b86c43    //https://home.openweathermap.org
+	
+	AIzaSyDyF8XK99hz7CK_5c80Z77korpnnpz2BrQ    //https://console.cloud.google.com/
+	
+	561aec31d82b46a88ceae556bdad766a       https://newsapi.org/
+	
+	
+	
+	
+	
+	//invoke-customs are only supported starting with android o (--min-api 26)
+	android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+	
+	kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+Для windows 10 работает, спасибо)
+Удалить:
+C:\Users\...\AppData\Roaming\JetBrains\PhpStorm2020.1\eval
+C:\Users\...\AppData\Roaming\JetBrains\PhpStorm2020.1\options\others.xml
+В реестре удалить:
+HKEY_CURRENT_USER\Software\JavaSoft\Prefs\jetbrains\phpstorm

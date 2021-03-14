@@ -1,0 +1,52 @@
+История коммитов
+	git log
+	git log --oneline
+	git log --pretty=oneline
+	
+Отмена коммита (возврат на коммит назад)
+	git revert HEAD --no-edit
+	git revert <commit_hash> --no-edit (возврат до определенного коммита)
+
+Переход на
+определенный коммит: git checkout <commit_hash>;
+другую ветку:        git checkout <branch_name>;
+
+Просмотр веток:
+	git branch
+
+Создание ветки
+	git checkout -b <branch_name>;
+	
+Удаление ветки
+	git push origin --delete serverfix    //удаление ветки serverfix
+	
+LF to CRLF	
+	git config --global core.autocrlf true  //If you’re on a Windows machine, set it to true – this converts LF endings into CRLF when you check out code
+
+echo "123" > README.md    - записать строку 123 в файл README.md
+
+start <filename> - запустить файл в Git Bash
+
+…or create a new repository on the command line
+git init
+echo "# Recycler-view" >> README.md
+git add .
+git commit -m "first commit"
+git remote add origin https://github.com/Rozhkov1/Recycler-view.git
+git push -u origin master
+
+Изменение последнего коммита
+
+$ git commit -m 'initial commit'
+$ git add forgotten_file
+$ git commit --amend
+Все три команды вместе дают один коммит — второй коммит заменяет результат первого.
+
+
+
+	
+	
+	
+				ERRORS
+//fatal:refusing to merge unrelated histories
+git pull origin master --allow-unrelated-histories
