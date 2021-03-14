@@ -37,10 +37,28 @@ git push -u origin master
 
 Изменение последнего коммита
 
-$ git commit -m 'initial commit'
-$ git add forgotten_file
-$ git commit --amend
-Все три команды вместе дают один коммит — второй коммит заменяет результат первого.
+	$ git commit -m 'initial commit'
+	$ git add forgotten_file
+	$ git commit --amend
+	Все три команды вместе дают один коммит — второй коммит заменяет результат первого.
+
+IF YOU WANT TO PUSH A DELETED FILE TO REMOTE
+
+	git add 'deleted file name'
+	git commit -m'message'
+	git push -u origin branch
+
+If you want to delete a file from remote and locally
+
+	git rm 'file name'
+	git commit -m'message'
+	git push -u origin branch
+
+IF YOU WANT TO DELETE A FILE FROM REMOTE ONLY
+
+	git rm --cached 'file name'
+	git commit -m'message'
+	git push -u origin branch
 
 
 
