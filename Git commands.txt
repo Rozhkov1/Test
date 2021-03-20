@@ -7,6 +7,8 @@
 	git revert HEAD --no-edit
 	git revert <commit_hash> --no-edit (возврат до определенного коммита)
 
+
+BRANCH
 Переход на
 определенный коммит: git checkout <commit_hash>;
 другую ветку:        git checkout <branch_name>;
@@ -16,10 +18,16 @@
 
 Создание ветки
 	git checkout -b <branch_name>;
-	
-Удаление ветки
-	git push origin --delete serverfix    //удаление ветки serverfix
-	
+		
+// delete branch locally
+	git branch -d localBranchName
+
+// delete branch remotely
+	git push origin --delete remoteBranchName
+
+
+
+
 LF to CRLF	
 	git config --global core.autocrlf true  //If you’re on a Windows machine, set it to true – this converts LF endings into CRLF when you check out code
 
@@ -48,7 +56,7 @@ IF YOU WANT TO PUSH A DELETED FILE TO REMOTE
 	git commit -m'message'
 	git push -u origin branch
 
-If you want to delete a file from remote and locally
+IF YOU WANT TO DELETE A FILE FROM REMOTE AND LOCALLY
 
 	git rm 'file name'
 	git commit -m'message'
