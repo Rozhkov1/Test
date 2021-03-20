@@ -17,8 +17,13 @@
 Создание ветки
 	git checkout -b <branch_name>;
 	
-Удаление ветки
+Удаление удаленной ветки
 	git push origin --delete serverfix    //удаление ветки serverfix
+	
+Удаление локальной ветки
+	git branch -d localBranchName
+
+
 	
 LF to CRLF	
 	git config --global core.autocrlf true  //If you’re on a Windows machine, set it to true – this converts LF endings into CRLF when you check out code
