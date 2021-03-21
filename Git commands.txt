@@ -8,7 +8,8 @@
 	git revert <commit_hash> --no-edit (возврат до определенного коммита)
 
 
-BRANCH
+					BRANCH
+
 Переход на
 определенный коммит: git checkout <commit_hash>;
 другую ветку:        git checkout <branch_name>;
@@ -24,12 +25,11 @@ BRANCH
 
 // delete branch remotely
 	git push origin --delete remoteBranchName
+	
+	
+					
+					FILE
 
-
-
-
-LF to CRLF	
-	git config --global core.autocrlf true  //If you’re on a Windows machine, set it to true – this converts LF endings into CRLF when you check out code
 
 echo "123" > README.md    - записать строку 123 в файл README.md
 
@@ -67,6 +67,11 @@ IF YOU WANT TO DELETE A FILE FROM REMOTE ONLY
 	git rm --cached 'file name'
 	git commit -m'message'
 	git push -u origin branch
+	
+RETURN FILE STATE TO PREVIOUS COMMIT
+
+	git reser --hard <commitID>
+	git clean -f
 
 
 
@@ -76,3 +81,7 @@ IF YOU WANT TO DELETE A FILE FROM REMOTE ONLY
 				ERRORS
 //fatal:refusing to merge unrelated histories
 git pull origin master --allow-unrelated-histories
+
+LF to CRLF
+//If you’re on a Windows machine, set it to true – this converts LF endings into CRLF when you check out code	
+	git config --global core.autocrlf true  
