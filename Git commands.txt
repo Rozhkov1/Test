@@ -70,7 +70,7 @@ IF YOU WANT TO DELETE A FILE FROM REMOTE ONLY
 	
 RETURN FILE STATE TO PREVIOUS COMMIT
 
-	git reser --hard <commitID>
+	git reset --hard <commitID>
 	git clean -f
 
 

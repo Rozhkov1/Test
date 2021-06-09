@@ -24,6 +24,7 @@ ntp.time.in.ua - основной сервер точного времени в 
 	00d9ac59b4bdc924164e509194b86c43    //https://home.openweathermap.org
 	
 	AIzaSyDyF8XK99hz7CK_5c80Z77korpnnpz2BrQ    //https://console.cloud.google.com/
+	AIzaSyAWvJEQXiRX45c4JXWxyjFDnHoi7JUXvRU
 	
 	561aec31d82b46a88ceae556bdad766a       https://newsapi.org/
 	
